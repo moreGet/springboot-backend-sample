@@ -23,7 +23,7 @@ public class ProductServiceImpl implements ProductService {
 
         List<Product> productList =
                 Optional.ofNullable(productRepository.findAll())
-                        .filter(list -> list.size() > 3)
+//                        .filter(list -> list.size() > 3)
                         .orElseThrow(() -> new ProductNotFoundException());
         log.info("[ FLOW-04 {} ] [ SERVICE ] CALL FIND_ALL METHOD {}", ThreadLocalUtil.getUUID(), productList);
 
