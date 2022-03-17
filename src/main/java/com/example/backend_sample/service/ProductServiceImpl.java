@@ -2,6 +2,7 @@ package com.example.backend_sample.service;
 
 import com.example.backend_sample.domain.product.Product;
 import com.example.backend_sample.domain.product.ProductRepository;
+import com.example.backend_sample.exception.ProductNotFoundException;
 import com.example.backend_sample.util.ThreadLocalUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +24,7 @@ public class ProductServiceImpl implements ProductService {
         List<Product> productList =
                 Optional.ofNullable(productRepository.findAll())
                         .filter(list -> list.size() > 3)
-                        .orElseThrow(() -> new IllegalArgumentException("데이터가 없습니다."));
+                        .orElseThrow(() -> new ProductNotFoundException());
         log.info("[ FLOW-04 {} ] [ SERVICE ] CALL FIND_ALL METHOD {}", ThreadLocalUtil.getUUID(), productList);
 
         return productList;

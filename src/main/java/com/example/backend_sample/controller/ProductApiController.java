@@ -20,7 +20,7 @@ public class ProductApiController {
     private final ProductService productService;
 
     @AopConfiguration
-    @GetMapping("/getList")
+    @GetMapping("/findAll")
     public List<Product> findAll() {
         log.info("[ FLOW-01 {} ] [ CONTROLLER ] CALL FIND_ALL METHOD", ThreadLocalUtil.getUUID());
         return productService.findAll();
